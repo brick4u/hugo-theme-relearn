@@ -158,10 +158,17 @@
                   {{- partial "menu-pre.html" . }}{{ or .Params.menuTitle .LinkTitle .Title }}{{ partial "menu-post.html" . }}
                   {{- if $showvisitedlinks }}<i class="fas fa-check read-icon"></i>{{ end }}</a></li>
             {{- end }}
+            {{if $isActive }}
+              {{ partial "menu-active-extra.html" . }}
+            {{end}}
         {{- else }}
           <li data-nav-id="{{.RelPermalink}}" title="{{.Title}}" class="dd-item{{if $isActive }} active{{end}}"><a href="{{.RelPermalink}}">
               {{- partial "menu-pre.html" . }}{{ or .Params.menuTitle .LinkTitle .Title }}{{ partial "menu-post.html" . }}
-              {{- if $showvisitedlinks }}<i class="fas fa-check read-icon"></i>{{ end }}</a></li>
+              {{- if $showvisitedlinks }}<i class="fas fa-check read-icon"></i>{{ end }}</a>
+              {{if $isActive }}
+                {{ partial "menu-active-extra.html" . }}
+              {{end}}
+          </li>
         {{- end }}
       {{- end }}
     {{- end }}
